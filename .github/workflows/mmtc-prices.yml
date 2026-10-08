@@ -1,0 +1,39 @@
+name: MMTC-PAMP price sync
+
+# Every 2 hours from 06:30 to 20:30 IST (01:00–15:00 UTC), plus manual runs.
+on:
+  schedule:
+    - cron: "0 1-15/2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mmtc-prices
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            data
+            scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber==0.11.4
+      - name: Read today's MMTC-PAMP price list
+        run: python scripts/mmtc_prices.py
+      - name: Commit if prices changed
+        run: |
+          if git diff --quiet -- data/mmtc-prices.json && git ls-files --error-unmatch data/mmtc-prices.json >/dev/null 2>&1; then exit 0; fi
+          git config user.name "tjh-price-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/mmtc-prices.json
+          git commit -m "MMTC-PAMP prices $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
