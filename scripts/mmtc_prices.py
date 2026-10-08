@@ -8,6 +8,7 @@ leaves the previous file untouched.
 """
 import io
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -102,6 +103,7 @@ def main():
     if old == doc:
         print("No change:", doc["listTime"])
         return
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f:
         json.dump(doc, f, indent=1, ensure_ascii=False)
         f.write("\n")
