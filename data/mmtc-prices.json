@@ -3,6 +3,7 @@
  "currency": "INR",
  "pricesInclude": "taxes",
  "listTime": "2026-10-10T09:30:04+05:30",
+ "checkedAt": "2026-10-10T12:04:28+05:30",
  "gold": [
   {
    "grams": 5,
