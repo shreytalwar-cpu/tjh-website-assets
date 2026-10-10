@@ -1,9 +1,10 @@
 name: MMTC-PAMP price sync
 
-# Every 2 hours from 06:30 to 20:30 IST (01:00–15:00 UTC), plus manual runs.
+# Every 30 minutes, all day. Avoid the start-of-hour GitHub Actions peak.
+# The UTC offsets also give :07 and :37 in India.
 on:
   schedule:
-    - cron: "0 1-15/2 * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -27,8 +28,22 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pdfplumber==0.11.4
+      - name: Check last-good-price safeguards
+        run: python -m unittest discover -s scripts -p 'test_mmtc_prices.py'
       - name: Read today's MMTC-PAMP price list
         run: python scripts/mmtc_prices.py
+      - name: Describe the validated refresh
+        run: |
+          python - <<'PY'
+          import json, os
+          with open('data/mmtc-prices.json') as f:
+              prices = json.load(f)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+              f.write('## MMTC-PAMP price refresh\n\n')
+              f.write(f"Supplier list: {prices['listTime']}\n\n")
+              f.write(f"Checked: {prices['checkedAt']}\n\n")
+              f.write('All 9 required weight tiers validated; prices include GST.\n')
+          PY
       - name: Commit if prices changed
         run: |
           if git diff --quiet -- data/mmtc-prices.json && git ls-files --error-unmatch data/mmtc-prices.json >/dev/null 2>&1; then exit 0; fi

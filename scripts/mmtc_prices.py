@@ -11,6 +11,9 @@ import json
 import os
 import re
 import sys
+import tempfile
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
@@ -83,15 +86,44 @@ def parse(text):
     return list_time, out
 
 
+def fetch_pdf():
+    """Retry transient supplier failures; never replace prices with bad data."""
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(PDF_URL, headers={
+                "User-Agent": "tjh-website-price-sync",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+            })
+            with urllib.request.urlopen(req, timeout=45) as response:
+                data = response.read(10_000_001)
+            if len(data) > 10_000_000 or not data.startswith(b"%PDF-"):
+                raise ValueError("supplier response is not a valid-sized PDF")
+            return data
+        except (OSError, ValueError, urllib.error.URLError):
+            if attempt == 2:
+                raise
+            time.sleep(2 ** (attempt + 1))
+
+
+def validate_timestamp(list_time, old, now):
+    if list_time > now + timedelta(minutes=5):
+        raise ValueError("supplier timestamp is in the future")
+    if old and old.get("listTime"):
+        if list_time < datetime.fromisoformat(old["listTime"]):
+            raise ValueError("supplier returned an older list; keeping last good prices")
+
+
 def main():
-    req = urllib.request.Request(PDF_URL, headers={"User-Agent": "tjh-website-price-sync"})
-    data = urllib.request.urlopen(req, timeout=60).read()
+    data = fetch_pdf()
     list_time, prices = parse(read_pdf(data))
+    now = datetime.now(IST)
     doc = {
         "source": "MMTC-PAMP price list",
         "currency": "INR",
         "pricesInclude": "taxes",
         "listTime": list_time.isoformat(),
+        "checkedAt": now.isoformat(timespec="seconds"),
         "gold": prices["gold"],
         "silver": prices["silver"],
     }
@@ -100,14 +132,25 @@ def main():
             old = json.load(f)
     except (OSError, ValueError):
         old = None
+    validate_timestamp(list_time, old, now)
     if old == doc:
         print("No change:", doc["listTime"])
         return
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w") as f:
-        json.dump(doc, f, indent=1, ensure_ascii=False)
-        f.write("\n")
-    print("Updated:", doc["listTime"], [(r["grams"], r["price"]) for r in doc["gold"] + doc["silver"]])
+    # Publish the entire validated document atomically, never a partial file.
+    temp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", dir=os.path.dirname(OUT),
+                                         encoding="utf-8", delete=False) as f:
+            temp_path = f.name
+            json.dump(doc, f, indent=1, ensure_ascii=False)
+            f.write("\n")
+        os.replace(temp_path, OUT)
+    finally:
+        if temp_path and os.path.exists(temp_path):
+            os.unlink(temp_path)
+    print("Checked:", doc["checkedAt"], "Supplier list:", doc["listTime"],
+          [(r["grams"], r["price"]) for r in doc["gold"] + doc["silver"]])
 
 
 if __name__ == "__main__":
