@@ -2,62 +2,62 @@
  "source": "MMTC-PAMP price list",
  "currency": "INR",
  "pricesInclude": "taxes",
- "listTime": "2026-10-09T10:19:02+05:30",
+ "listTime": "2026-10-10T09:30:04+05:30",
  "gold": [
   {
    "grams": 5,
-   "price": 84010.0,
-   "priceExTax": 81563.11,
+   "price": 84020.0,
+   "priceExTax": 81572.82,
    "product": "5 gm Gold 999.9 Minted Coin Love Forever Minted Card"
   },
   {
    "grams": 10,
-   "price": 167790.0,
-   "priceExTax": 162902.91,
+   "price": 167820.0,
+   "priceExTax": 162932.04,
    "product": "10 gm Gold 999.9 Minted Bar Rose Minted Card"
   },
   {
    "grams": 20,
-   "price": 335240.0,
-   "priceExTax": 325475.73,
+   "price": 335300.0,
+   "priceExTax": 325533.98,
    "product": "20 gm Gold 999.9 Minted Coin Shankh Laxmi Minted Card (Box)"
   },
   {
    "grams": 50,
-   "price": 823360.0,
-   "priceExTax": 799378.64,
+   "price": 823510.0,
+   "priceExTax": 799524.27,
    "product": "50 gm Gold 999.9 Minted Bar Lotus Minted Card"
   },
   {
    "grams": 100,
-   "price": 1645370.0,
-   "priceExTax": 1597446.6,
+   "price": 1645660.0,
+   "priceExTax": 1597728.16,
    "product": "100 gm Gold 999.9 Minted Bar Lotus Minted Card (923)"
   }
  ],
  "silver": [
   {
    "grams": 10,
-   "price": 3090.0,
-   "priceExTax": 3000.0,
+   "price": 3100.0,
+   "priceExTax": 3009.71,
    "product": "10 gm Silver 999.9 Minted Coin Ganesh Laxmi Minted Card"
   },
   {
    "grams": 50,
-   "price": 13430.0,
-   "priceExTax": 13038.83,
+   "price": 13470.0,
+   "priceExTax": 13077.67,
    "product": "50 gm Silver 999.9 Minted Coin Ganesh Laxmi Minted Card"
   },
   {
    "grams": 100,
-   "price": 26220.0,
-   "priceExTax": 25456.31,
+   "price": 26290.0,
+   "priceExTax": 25524.27,
    "product": "100 gm Silver 999.9 Casted Bar"
   },
   {
    "grams": 1000,
-   "price": 258140.0,
-   "priceExTax": 250621.36,
+   "price": 258940.0,
+   "priceExTax": 251398.06,
    "product": "1 Kg Silver 999.9 Casted Bar"
   }
  ]
