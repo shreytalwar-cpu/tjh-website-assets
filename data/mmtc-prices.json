@@ -2,63 +2,63 @@
  "source": "MMTC-PAMP price list",
  "currency": "INR",
  "pricesInclude": "taxes",
- "listTime": "2026-11-02T10:21:02+05:30",
- "checkedAt": "2026-11-03T09:23:27+05:30",
+ "listTime": "2026-11-03T16:59:49+05:30",
+ "checkedAt": "2026-11-03T17:17:51+05:30",
  "gold": [
   {
    "grams": 5,
-   "price": 77450.0,
-   "priceExTax": 75194.17,
+   "price": 77380.0,
+   "priceExTax": 75126.21,
    "product": "5 gm Gold 999.9 Minted Coin Love Forever Minted Card"
   },
   {
    "grams": 10,
-   "price": 154680.0,
-   "priceExTax": 150174.76,
+   "price": 154530.0,
+   "priceExTax": 150029.13,
    "product": "10 gm Gold 999.9 Minted Bar Rose Minted Card"
   },
   {
    "grams": 20,
-   "price": 309020.0,
-   "priceExTax": 300019.42,
+   "price": 308720.0,
+   "priceExTax": 299728.16,
    "product": "20 gm Gold 999.9 Minted Coin Shankh Laxmi Minted Card (Box)"
   },
   {
    "grams": 50,
-   "price": 758720.0,
-   "priceExTax": 736621.36,
+   "price": 757980.0,
+   "priceExTax": 735902.91,
    "product": "50 gm Gold 999.9 Minted Bar Lotus Minted Card"
   },
   {
    "grams": 100,
-   "price": 1516090.0,
-   "priceExTax": 1471932.04,
+   "price": 1514590.0,
+   "priceExTax": 1470475.73,
    "product": "100 gm Gold 999.9 Minted Bar Lotus Minted Card (923)"
   }
  ],
  "silver": [
   {
    "grams": 10,
-   "price": 2560.0,
-   "priceExTax": 2485.44,
+   "price": 2520.0,
+   "priceExTax": 2446.6,
    "product": "10 gm Silver 999.9 Minted Coin Ganesh Laxmi Minted Card"
   },
   {
    "grams": 50,
-   "price": 11010.0,
-   "priceExTax": 10689.32,
+   "price": 10820.0,
+   "priceExTax": 10504.85,
    "product": "50 gm Silver 999.9 Minted Coin Ganesh Laxmi Minted Card"
   },
   {
    "grams": 100,
-   "price": 21110.0,
-   "priceExTax": 20495.15,
+   "price": 20740.0,
+   "priceExTax": 20135.92,
    "product": "100 gm Silver 999.9 Casted Bar"
   },
   {
    "grams": 1000,
-   "price": 210000.0,
-   "priceExTax": 203883.5,
+   "price": 206220.0,
+   "priceExTax": 200213.59,
    "product": "1 Kg Silver 999.9 Casted Bar"
   }
  ]
