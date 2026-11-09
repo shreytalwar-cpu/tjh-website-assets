@@ -2,63 +2,63 @@
  "source": "MMTC-PAMP price list",
  "currency": "INR",
  "pricesInclude": "taxes",
- "listTime": "2026-11-07T09:20:32+05:30",
- "checkedAt": "2026-11-09T07:23:14+05:30",
+ "listTime": "2026-11-09T10:05:32+05:30",
+ "checkedAt": "2026-11-09T15:03:08+05:30",
  "gold": [
   {
    "grams": 5,
-   "price": 79550.0,
-   "priceExTax": 77233.01,
+   "price": 80330.0,
+   "priceExTax": 77990.29,
    "product": "5 gm Gold 999.9 Minted Coin Love Forever Minted Card"
   },
   {
    "grams": 10,
-   "price": 158880.0,
-   "priceExTax": 154252.43,
+   "price": 160430.0,
+   "priceExTax": 155757.28,
    "product": "10 gm Gold 999.9 Minted Bar Rose Minted Card"
   },
   {
    "grams": 20,
-   "price": 317420.0,
-   "priceExTax": 308174.76,
+   "price": 320530.0,
+   "priceExTax": 311194.17,
    "product": "20 gm Gold 999.9 Minted Coin Shankh Laxmi Minted Card (Box)"
   },
   {
    "grams": 50,
-   "price": 779420.0,
-   "priceExTax": 756718.45,
+   "price": 787100.0,
+   "priceExTax": 764174.76,
    "product": "50 gm Gold 999.9 Minted Bar Lotus Minted Card"
   },
   {
    "grams": 100,
-   "price": 1557480.0,
-   "priceExTax": 1512116.5,
+   "price": 1572830.0,
+   "priceExTax": 1527019.42,
    "product": "100 gm Gold 999.9 Minted Bar Lotus Minted Card (923)"
   }
  ],
  "silver": [
   {
    "grams": 10,
-   "price": 2630.0,
-   "priceExTax": 2553.4,
+   "price": 2670.0,
+   "priceExTax": 2592.23,
    "product": "10 gm Silver 999.9 Minted Coin Ganesh Laxmi Minted Card"
   },
   {
    "grams": 50,
-   "price": 11320.0,
-   "priceExTax": 10990.29,
+   "price": 11510.0,
+   "priceExTax": 11174.76,
    "product": "50 gm Silver 999.9 Minted Coin Ganesh Laxmi Minted Card"
   },
   {
    "grams": 100,
-   "price": 21710.0,
-   "priceExTax": 21077.67,
+   "price": 22090.0,
+   "priceExTax": 21446.6,
    "product": "100 gm Silver 999.9 Casted Bar"
   },
   {
    "grams": 1000,
-   "price": 216120.0,
-   "priceExTax": 209825.24,
+   "price": 219980.0,
+   "priceExTax": 213572.82,
    "product": "1 Kg Silver 999.9 Casted Bar"
   }
  ]
